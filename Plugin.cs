@@ -21,7 +21,7 @@ namespace StanceReplication
     public class Plugin : BaseUnityPlugin
     {
         internal static ManualLogSource REAL_Logger;
-        public static Dictionary<string, RSR_Observed_Component> ObservedComponents;
+        public static Dictionary<int, RSR_Observed_Component> ObservedComponents;
         public static ConfigEntry<bool> EnableForBots { get; set; }
         public static ConfigEntry<float> CancelTimer { get; set; }
         public static ConfigEntry<float> ResetTimer { get; set; }
@@ -40,7 +40,7 @@ namespace StanceReplication
             FikaEventDispatcher.SubscribeEvent<FikaServerCreatedEvent>(ServerCreated);
             FikaEventDispatcher.SubscribeEvent<FikaGameCreatedEvent>(GameWorldStarted);
 
-            ObservedComponents = new Dictionary<string, RSR_Observed_Component>();
+            ObservedComponents = new Dictionary<int, RSR_Observed_Component>();
 
             REAL_Logger = Logger;
             REAL_Logger.LogInfo($"{nameof(Plugin)} has been loaded.");
@@ -55,7 +55,7 @@ namespace StanceReplication
             }
             else
             {
-                ObservedComponents = new Dictionary<string, RSR_Observed_Component>();
+                ObservedComponents = new Dictionary<int, RSR_Observed_Component>();
             }
         }
 
@@ -71,7 +71,7 @@ namespace StanceReplication
 
         private void HandleRealismPacketClient(RealismPacket packet)
         {
-            if (ObservedComponents.TryGetValue(packet.ProfileId, out var player))
+            if (ObservedComponents.TryGetValue(packet.NetID, out var player))
             {
                 player.SetAnimValues(packet.WeapPosition, packet.Rotation, packet.IsPatrol, packet.SprintAnimationVarient);
             }
@@ -79,7 +79,7 @@ namespace StanceReplication
 
         private void HandleRealismPacketServer(RealismPacket packet, NetPeer peer)
         {
-            if (ObservedComponents.TryGetValue(packet.ProfileId, out var player))
+            if (ObservedComponents.TryGetValue(packet.NetID, out var player))
             {
                 player.SetAnimValues(packet.WeapPosition, packet.Rotation, packet.IsPatrol, packet.SprintAnimationVarient);
             }

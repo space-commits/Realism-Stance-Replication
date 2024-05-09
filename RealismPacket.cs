@@ -7,14 +7,14 @@ namespace StanceReplication
     public struct RealismPacket : INetSerializable
     {
         public float SprintAnimationVarient;
-        public string ProfileId;
+        public int NetID;
         public bool IsPatrol;
         public Vector3 WeapPosition;
         public Quaternion Rotation;
 
         public void Deserialize(NetDataReader reader)
         {
-            ProfileId = reader.GetString();
+            NetID = reader.GetInt();
             WeapPosition = reader.GetVector3();
             Rotation = reader.GetQuaternion();
             IsPatrol = reader.GetBool();
@@ -23,7 +23,7 @@ namespace StanceReplication
 
         public void Serialize(NetDataWriter writer)
         {
-            writer.Put(ProfileId);
+            writer.Put(NetID);
             writer.Put(WeapPosition);
             writer.Put(Rotation);
             writer.Put(IsPatrol);

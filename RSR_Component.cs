@@ -68,7 +68,7 @@ namespace StanceReplication
 
             RealismPacket packet = new RealismPacket()
             {
-                ProfileId = player.ProfileId,
+                NetID = player.NetId,
                 WeapPosition = player.ProceduralWeaponAnimation.HandsContainer.HandsPosition.Zero,
                 Rotation = player.ProceduralWeaponAnimation.HandsContainer.WeaponRootAnim.transform.rotation,
                 IsPatrol = WeaponAnimationSpeedControllerClass.GetBoolPatrol(player.HandsAnimator.Animator),

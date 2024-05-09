@@ -26,7 +26,7 @@ namespace StanceReplication
         {
             observedCoopPlayer = GetComponent<ObservedCoopPlayer>();
             observedCoopPlayer.OnPlayerDead += DeleteThis;
-            Plugin.ObservedComponents.Add(observedCoopPlayer.ProfileId, this);
+            Plugin.ObservedComponents.Add(observedCoopPlayer.NetId, this);
         }
 
         private void DeleteThis(EFT.Player player, EFT.IPlayer lastAggressor, DamageInfo damageInfo, EBodyPart part)
