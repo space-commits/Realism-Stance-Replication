@@ -19,7 +19,6 @@ namespace StanceReplication
     public class RSR_Component : MonoBehaviour
     {
         CoopPlayer player;
-        int frameCounter;
         FikaServer server;
         FikaClient client;
         bool isServer = false;

@@ -26,12 +26,22 @@ namespace StanceReplication
         public static ConfigEntry<float> CancelTimer { get; set; }
         public static ConfigEntry<float> ResetTimer { get; set; }
 
+        public static ConfigEntry<float> Test1 { get; set; }
+        public static ConfigEntry<float> Test2 { get; set; }
+        public static ConfigEntry<float> Test3 { get; set; }
+
         protected void Awake()
         {
             EnableForBots = Config.Bind<bool>("Options", "Enable Stance Replication For Bots", true, new ConfigDescription("Requires Restart. Toggles replication for bots. Disabling can help improve performance if there are any issues.", null, new ConfigurationManagerAttributes { Order = 1 }));
             ResetTimer = Config.Bind<float>("Options", "Reset Timer", 0.2f, new ConfigDescription("Time before stance resets after sprinting or collision.", new AcceptableValueRange<float>(0.0f, 20f), new ConfigurationManagerAttributes { ShowRangeAsPercent = false, Order = 3, IsAdvanced = true }));
             CancelTimer = Config.Bind<float>("Options", "Cancel Timer", 0.2f, new ConfigDescription("Time before stance is cancelled due to sprinting or collision.", new AcceptableValueRange<float>(0.0f, 20f), new ConfigurationManagerAttributes { ShowRangeAsPercent = false, Order = 4, IsAdvanced = true }));
-           
+
+            Test1 = Config.Bind<float>("Debug", "Test Value 1", 1f, new ConfigDescription("", new AcceptableValueRange<float>(-1000f, 1000f), new ConfigurationManagerAttributes { ShowRangeAsPercent = false, Order = 3, IsAdvanced = true }));
+            Test2 = Config.Bind<float>("Debug", "Test Value 2", 1f, new ConfigDescription("", new AcceptableValueRange<float>(-1000f, 1000f), new ConfigurationManagerAttributes { ShowRangeAsPercent = false, Order = 2, IsAdvanced = true }));
+            Test3 = Config.Bind<float>("Debug", "Test Value 3", 1f, new ConfigDescription("", new AcceptableValueRange<float>(-1000f, 1000f), new ConfigurationManagerAttributes { ShowRangeAsPercent = false, Order = 1, IsAdvanced = true }));
+
+
+
             new CoopBot_Create_Patch().Enable();
             new CoopPlayer_Create_Patch().Enable();
             new ObservedCoopPlayer_Create_Patch().Enable();
