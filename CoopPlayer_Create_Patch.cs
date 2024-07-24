@@ -1,4 +1,4 @@
-﻿using Aki.Reflection.Patching;
+﻿using SPT.Reflection.Patching;
 using Fika.Core.Coop.Players;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace StanceReplication
     {
         protected override MethodBase GetTargetMethod()
         {
-            return typeof(CoopPlayer).GetMethod("Start", BindingFlags.NonPublic | BindingFlags.Instance);
+            return typeof(CoopPlayer).GetMethod("Create");
         }
 
         [PatchPostfix]

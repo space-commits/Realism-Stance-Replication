@@ -2,21 +2,16 @@
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using Comfort.Common;
-using EFT.UI;
-using Fika.Core.Coop.Components;
-using Fika.Core.Coop.Matchmaker;
 using Fika.Core.Modding;
 using Fika.Core.Modding.Events;
 using Fika.Core.Networking;
 using LiteNetLib;
 using LiteNetLib.Utils;
-using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace StanceReplication
 {
-    [BepInPlugin("com.lacyway.rsr", "RealismStanceReplication", "1.0.0")]
+    [BepInPlugin("com.lacyway.rsr", "RealismStanceReplication", "1.1.0")]
     [BepInDependency("com.fika.core", BepInDependency.DependencyFlags.HardDependency)]
     public class Plugin : BaseUnityPlugin
     {

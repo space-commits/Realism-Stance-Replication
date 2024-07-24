@@ -2,7 +2,6 @@
 using EFT;
 using EFT.Animations;
 using EFT.UI;
-using Fika.Core.Coop.Matchmaker;
 using Fika.Core.Coop.Players;
 using Fika.Core.Networking;
 using LiteNetLib.Utils;
@@ -13,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using Fika.Core.Coop.Utils;
 
 namespace StanceReplication
 {
@@ -33,7 +33,7 @@ namespace StanceReplication
                 return;
             }
 
-            if (MatchmakerAcceptPatches.IsServer)
+            if (FikaBackendUtils.IsServer)
             {
                 server = Singleton<FikaServer>.Instance;
                 isServer = true;

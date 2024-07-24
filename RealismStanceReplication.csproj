@@ -40,8 +40,8 @@
     <Reference Include="0Harmony">
       <HintPath>References\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="Aki.Reflection">
-      <HintPath>References\Aki.Reflection.dll</HintPath>
+    <Reference Include="spt-reflection">
+      <HintPath>References\spt-reflection.dll</HintPath>
     </Reference>
     <Reference Include="AnimationSystem.Types">
       <HintPath>References\AnimationSystem.Types.dll</HintPath>
